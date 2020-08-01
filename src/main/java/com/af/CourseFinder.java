@@ -11,6 +11,7 @@ public class CourseFinder {
 
     private static void findCourse(List<String> stringList){
         //stringList.stream().filter(course  -> course.contains("Spring")).forEach(System.out::println);
-        stringList.stream().filter(course  -> course.length() > 4).forEach(System.out::println);
+        //stringList.stream().filter(course  -> course.length() > 4).forEach(System.out::println);
+        stringList.stream().map(String::length).forEach(System.out::println);
     }
 }
