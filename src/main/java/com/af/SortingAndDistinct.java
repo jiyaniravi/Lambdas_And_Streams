@@ -25,9 +25,13 @@ public class SortingAndDistinct {
     private static void printDistinctAndSortedStrings(List<String> courses){
         //courses.stream().distinct().sorted().forEach(System.out::println);
         //courses.stream().distinct().sorted(Comparator.reverseOrder()).forEach(System.out::println);
-        courses.stream()
+        /*courses.stream()
                 .distinct()
                 .sorted(Comparator.comparing(course -> course.length()))
+                .forEach(System.out::println);*/
+        courses.stream()
+                .distinct()
+                .sorted(Comparator.comparing(String::length))
                 .forEach(System.out::println);
     }
 }
