@@ -2,6 +2,7 @@ package com.af;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class SortingAndDistinct {
@@ -12,7 +13,7 @@ public class SortingAndDistinct {
     }
 
     private static void printDistinctAndSortedValues(List<Integer> numbers){
-        numbers.stream().distinct().sorted().forEach(System.out::println);
+        numbers.stream().distinct().sorted(Comparator.reverseOrder()).forEach(System.out::println);
     }
 
 }
