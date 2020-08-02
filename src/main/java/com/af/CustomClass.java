@@ -251,5 +251,29 @@ public class CustomClass {
                                 .filter(reviewScoreGreaterThan95Predicate)
                                 .mapToInt(Course::getNoOfStudents)
                                 .count());
+
+        CollectorExamples.printDash();
+        System.out.println(
+            courses.stream()
+                    .collect(Collectors.groupingBy(Course::getCategory))
+        );
+
+        CollectorExamples.printDash();
+        System.out.println(
+                courses.stream()
+                        .collect(Collectors.groupingBy(Course::getCategory, Collectors.counting()))
+        );
+
+        CollectorExamples.printDash();
+        System.out.println(
+                courses.stream()
+                        .collect(
+                                Collectors.groupingBy(Course::getCategory,
+                                                      Collectors.maxBy(
+                                                              Comparator.comparing(Course::getReviewScore)
+                                                      )
+                                        )
+                        )
+        );
     }
 }
