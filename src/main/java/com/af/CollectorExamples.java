@@ -53,7 +53,7 @@ public class CollectorExamples {
                 .collect(Collectors.toList());
     }
 
-    private static void printDash(){
+    public static void printDash(){
         System.out.println("----------------------------------------------");
     }
 }
