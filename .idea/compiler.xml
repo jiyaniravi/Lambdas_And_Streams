@@ -12,6 +12,6 @@
         <module name="Lambdas_And_Streams.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.8" />
+    <bytecodeTargetLevel target="13" />
   </component>
 </project>

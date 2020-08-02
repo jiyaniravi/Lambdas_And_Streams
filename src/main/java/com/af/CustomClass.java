@@ -154,5 +154,19 @@ public class CustomClass {
                         .limit(5)
                         .collect(Collectors.toList())
         );
+
+        CollectorExamples.printDash();
+        System.out.println(
+                courses.stream()
+                        .takeWhile(course -> course.getReviewScore() >= 95)
+                        .collect(Collectors.toList())
+        );
+
+        CollectorExamples.printDash();
+        System.out.println(
+                courses.stream()
+                        .dropWhile(course -> course.getReviewScore() >= 95)
+                        .collect(Collectors.toList())
+        );
     }
 }
