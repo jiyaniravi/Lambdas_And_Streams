@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Builder(setterPrefix = "with")
@@ -167,6 +168,70 @@ public class CustomClass {
                 courses.stream()
                         .dropWhile(course -> course.getReviewScore() >= 95)
                         .collect(Collectors.toList())
+        );
+
+        CollectorExamples.printDash();
+        System.out.println(
+                courses.stream()
+                        .max(comparingByNumberOfStudentsAndNumberOfReviews)
+        );
+
+        System.out.println(
+                courses.stream()
+                        .min(comparingByNumberOfStudentsAndNumberOfReviews)
+        );
+
+        CollectorExamples.printDash();
+        System.out.println(
+                courses.stream()
+                        .filter(reviewScoreLessThan90Predicate)
+                        .min(comparingByNumberOfStudentsAndNumberOfReviews)
+        );
+
+        CollectorExamples.printDash();
+        System.out.println(
+                courses.stream()
+                        .filter(reviewScoreLessThan90Predicate)
+                        .min(comparingByNumberOfStudentsAndNumberOfReviews)
+                        .orElse(Course.builder()
+                                .withName("Default")
+                                .withCategory("Default")
+                                .withNoOfStudents(50000)
+                                .withReviewScore(75).build())
+        );
+
+        CollectorExamples.printDash();
+        System.out.println(
+                courses.stream()
+                        .filter(reviewScoreLessThan90Predicate)
+                        .findFirst()
+        );
+        System.out.println(
+                courses.stream()
+                        .filter(reviewScoreLessThan90Predicate)
+                        .limit(1)
+                        .collect(Collectors.toList())
+        );
+
+        CollectorExamples.printDash();
+        System.out.println(
+                courses.stream()
+                        .filter(reviewScoreGreaterThan90Predicate)
+                        .findFirst()
+        );
+        System.out.println(
+                courses.stream()
+                        .filter(reviewScoreGreaterThan90Predicate)
+                        .limit(1)
+                        .collect(Collectors.toList())
+        );
+
+        CollectorExamples.printDash();
+        System.out.println(
+                courses.stream()
+                        .parallel()
+                        .filter(reviewScoreGreaterThan90Predicate)
+                        .findAny()
         );
     }
 }
