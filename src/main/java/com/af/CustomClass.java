@@ -4,8 +4,10 @@ import lombok.Builder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 @Builder(setterPrefix = "with")
 class Course {
@@ -101,6 +103,33 @@ public class CustomClass {
                 courses.stream().anyMatch(
                         reviewScoreGreaterThan95Predicate
                 )
+        );
+
+        Comparator<Course> comparingByNumberOfStudents
+                = Comparator.comparingInt(Course::getNoOfStudents);
+
+        Comparator<Course> comparingByNumberOfStudentsDesc
+                = Comparator.comparingInt(Course::getNoOfStudents).reversed();
+
+        Comparator<Course> comparingByNumberOfStudentsAndNumberOfReviews
+                = Comparator.comparingInt(Course::getNoOfStudents).thenComparingInt(Course::getNoOfStudents);
+
+        System.out.println(
+                courses.stream()
+                        .sorted(comparingByNumberOfStudents)
+                        .collect(Collectors.toList())
+        );
+
+        System.out.println(
+                courses.stream()
+                        .sorted(comparingByNumberOfStudentsDesc)
+                        .collect(Collectors.toList())
+        );
+
+        System.out.println(
+                courses.stream()
+                        .sorted(comparingByNumberOfStudentsAndNumberOfReviews)
+                        .collect(Collectors.toList())
         );
     }
 }
