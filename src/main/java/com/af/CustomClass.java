@@ -275,5 +275,14 @@ public class CustomClass {
                                         )
                         )
         );
+
+        CollectorExamples.printDash();
+        System.out.println(
+                courses.stream()
+                        .collect(
+                                Collectors.groupingBy(Course::getCategory,
+                                        Collectors.mapping(Course::getName, Collectors.toList()))
+                        )
+        );
     }
 }
