@@ -233,5 +233,23 @@ public class CustomClass {
                         .filter(reviewScoreGreaterThan90Predicate)
                         .findAny()
         );
+
+        CollectorExamples.printDash();
+        System.out.println(courses.stream()
+                                .filter(reviewScoreGreaterThan95Predicate)
+                                .mapToInt(Course::getNoOfStudents)
+                                .sum());
+
+        CollectorExamples.printDash();
+        System.out.println(courses.stream()
+                                .filter(reviewScoreGreaterThan95Predicate)
+                                .mapToInt(Course::getNoOfStudents)
+                                .average());
+
+        CollectorExamples.printDash();
+        System.out.println(courses.stream()
+                                .filter(reviewScoreGreaterThan95Predicate)
+                                .mapToInt(Course::getNoOfStudents)
+                                .count());
     }
 }
