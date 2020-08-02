@@ -81,24 +81,25 @@ public class CustomClass {
         Predicate<Course> reviewScoreGreaterThan90Predicate = course -> course.getReviewScore() > 90;
         Predicate<Course> reviewScoreLessThan90Predicate    = course -> course.getReviewScore() < 90;
 
+        CollectorExamples.printDash();
         System.out.println(
                 courses.stream().allMatch(
                         reviewScoreGreaterThan95Predicate
                 )
         );
-
+        CollectorExamples.printDash();
         System.out.println(
                 courses.stream().noneMatch(
                         reviewScoreGreaterThan95Predicate
                 )
         );
-
+        CollectorExamples.printDash();
         System.out.println(
                 courses.stream().noneMatch(
                         reviewScoreLessThan90Predicate
                 )
         );
-
+        CollectorExamples.printDash();
         System.out.println(
                 courses.stream().anyMatch(
                         reviewScoreGreaterThan95Predicate
@@ -113,22 +114,44 @@ public class CustomClass {
 
         Comparator<Course> comparingByNumberOfStudentsAndNumberOfReviews
                 = Comparator.comparingInt(Course::getNoOfStudents).thenComparingInt(Course::getNoOfStudents);
-
+        CollectorExamples.printDash();
         System.out.println(
                 courses.stream()
                         .sorted(comparingByNumberOfStudents)
                         .collect(Collectors.toList())
         );
-
+        CollectorExamples.printDash();
         System.out.println(
                 courses.stream()
                         .sorted(comparingByNumberOfStudentsDesc)
                         .collect(Collectors.toList())
         );
-
+        CollectorExamples.printDash();
         System.out.println(
                 courses.stream()
                         .sorted(comparingByNumberOfStudentsAndNumberOfReviews)
+                        .collect(Collectors.toList())
+        );
+        CollectorExamples.printDash();
+        System.out.println(
+                courses.stream()
+                        .sorted(comparingByNumberOfStudentsAndNumberOfReviews)
+                        .limit(5)
+                        .collect(Collectors.toList())
+        );
+        CollectorExamples.printDash();
+        System.out.println(
+                courses.stream()
+                        .sorted(comparingByNumberOfStudentsAndNumberOfReviews)
+                        .skip(2)
+                        .collect(Collectors.toList())
+        );
+        CollectorExamples.printDash();
+        System.out.println(
+                courses.stream()
+                        .sorted(comparingByNumberOfStudentsAndNumberOfReviews)
+                        .skip(2)
+                        .limit(5)
                         .collect(Collectors.toList())
         );
     }
