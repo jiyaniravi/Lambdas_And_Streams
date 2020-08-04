@@ -7,7 +7,7 @@
 > Intermediate Operations	: filter(), map(), distinct, sorted()
 > Terminate Operations 		: reduce(), collect(), forEach()
 > Functional Interface 		: Having only one abstract method
-> No, Lambda doesnot translate to anonymyous class at compile time! Its runtime 'InvokeDynamic' instruction
+> No, Lambda does not translate to anonymous class at compile time! Its runtime 'InvokeDynamic' instruction
 	https://www.logicbig.com/tutorials/core-java-tutorial/java-8-enhancements/java-lambda-functional-aspect.html
 > Functional Descriptor
 > Predicate, Function, Consumer, BinaryOperator, Supplier
@@ -33,7 +33,15 @@
 > courses.stream().flatMap(course -> courses2.stream().map(course2 -> List.of(course, course2)))
 														.filter(innerList -> !innerList.get(0).equals(innerList.get(1)))
 														.collect(Collectors.toList())
-> 														
+> Higher Order Functions : Higher order functions are the functions which returns the functions
+
+> courses.stream().peek(System.out::println).filter(course -> course.length()>10).map(String::toUpperCase).peek(System.out::println).findFirst()
+
+> Direct modification on List/Set collections :
+	.replaceAll(str -> str.toUpperCase())
+	.removeIf( course -> course.length()<5)
+	
+																
 
 > Git with IntelliJ : Shortcuts 
 > Ctrl + Alt + a 	: Add file

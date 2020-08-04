@@ -78,8 +78,8 @@ public class CustomClass {
                 )
         );
 
-        Predicate<Course> reviewScoreGreaterThan95Predicate = course -> course.getReviewScore() > 95;
-        Predicate<Course> reviewScoreGreaterThan90Predicate = course -> course.getReviewScore() > 90;
+        Predicate<Course> reviewScoreGreaterThan95Predicate = createPredicateWithCutoffReviewScore(95);
+        Predicate<Course> reviewScoreGreaterThan90Predicate = createPredicateWithCutoffReviewScore(90);
         Predicate<Course> reviewScoreLessThan90Predicate    = course -> course.getReviewScore() < 90;
 
         CollectorExamples.printDash();
@@ -284,5 +284,15 @@ public class CustomClass {
                                         Collectors.mapping(Course::getName, Collectors.toList()))
                         )
         );
+
+        //Higher Order Function
+        Predicate<Course> reviewScoreGreaterThan95Predicate2 = createPredicateWithCutoffReviewScore(95);
+        Predicate<Course> reviewScoreGreaterThan90Predicate2 = createPredicateWithCutoffReviewScore(90);
+
+        
+    }
+
+    private static Predicate<Course> createPredicateWithCutoffReviewScore(int i) {
+        return course -> course.getReviewScore() > i;
     }
 }
